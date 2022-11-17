@@ -1,5 +1,5 @@
 import './App.css';
-import PageEventCreate from './PageEventCreate'
+import './PageEventCreate'
 
 function App() {
   const baseURL = process.env.REACT_APP_API
