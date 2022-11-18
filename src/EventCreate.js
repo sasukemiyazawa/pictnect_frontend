@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useCallback } from "react"
 import axios from 'axios'
 
-const PageEventCreate = ({baseURL}) => {
+const EventCreate = ({baseURL}) => {
     const [eventname, setEventname] = useState('')
     const [contents, setContents] = useState('')
     const [term, setTerm] = useState(0)
@@ -25,12 +25,9 @@ const PageEventCreate = ({baseURL}) => {
     }
 
     const sendFormData = async() => {
-        const url = baseURL + '/events'
         const data = await createFormData()
-        const config = {
-            headers: {}//ヘッダーは空にしないとエラーになる
-        }
-        axios.post(url, data, config).then(res => {
+        await axios.post(baseURL + '/events', data, {headers: {}})
+        .then(res => {
             console.log(res);
             alert("投稿に成功しました！")
             })
@@ -52,4 +49,4 @@ const PageEventCreate = ({baseURL}) => {
     )
 }
 
-export default PageEventCreate
+export default EventCreate
