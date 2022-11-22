@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import EventListItem from './EventListItem'
 
-const EventSelect = ({baseURL}) =>{
+const EventSelect = ({baseURL, handler}) =>{
     const [events, setEvents] = useState([])
 
-    const getEvent = async() => {
+    const getEvents = async() => {
         await axios.get(baseURL + '/events')
         .then(res => {
             setEvents(res.data.data)
@@ -17,18 +18,22 @@ const EventSelect = ({baseURL}) =>{
 
 
     useEffect(()=>{
-        getEvent()
+        getEvents()
     }, [])
 
-    console.log(events)
 
     return(
-        <div>
-            {events.map((data) => {
-                console.log(data.image_url);
-                return(<img src={data.image_url}/>)
-            })}
-        </div>
+        <>
+        {events.map((data) => {
+            return(
+                <>
+                <br/>
+                <EventListItem data={data} handler={(id) => handler(id)} key={data.id}/>
+                <br/>
+                </>
+            )
+        })}
+        </>
     )
 }
 
