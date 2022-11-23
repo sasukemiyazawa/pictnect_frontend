@@ -7,7 +7,7 @@ function EventDetail({baseURL, id}){
     const [contents, setContents] = useState('')
     const [term, setTerm] = useState('')
     const [image, setImage] = useState('')
-    const [tags, setTags] = useState('')
+    const [tags, setTags] = useState([])
 
     //データの取得
     const getEvent = async() => {

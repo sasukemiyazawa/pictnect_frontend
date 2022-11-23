@@ -26,11 +26,7 @@ const EventSelect = ({baseURL, handler}) =>{
         <>
         {events.map((data) => {
             return(
-                <>
-                <br/>
                 <EventListItem data={data} handler={(id) => handler(id)} key={data.id}/>
-                <br/>
-                </>
             )
         })}
         </>
