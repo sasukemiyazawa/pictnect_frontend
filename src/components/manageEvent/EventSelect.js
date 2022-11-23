@@ -4,7 +4,7 @@ import EventListItem from './EventListItem'
 
 const EventSelect = ({baseURL, handler}) =>{
     const [events, setEvents] = useState([])
-
+    //イベントの取得・オブジェクトをそのままステートへ保存
     const getEvents = async() => {
         await axios.get(baseURL + '/events')
         .then(res => {
@@ -21,7 +21,7 @@ const EventSelect = ({baseURL, handler}) =>{
         getEvents()
     }, [])
 
-
+    //個々のイベントをmapで取り出しEventListItemへデータを渡しレンダリング
     return(
         <>
         {events.map((data) => {

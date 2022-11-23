@@ -9,6 +9,7 @@ function EventDetail({baseURL, id}){
     const [image, setImage] = useState('')
     const [tags, setTags] = useState('')
 
+    //データの取得
     const getEvent = async() => {
         if(id !== -1){
             await axios.get(baseURL + '/events/' + id)
@@ -26,11 +27,12 @@ function EventDetail({baseURL, id}){
         }
     }
 
-
+    //idが変更されたときに再レンダリング
     useEffect(()=>{
         getEvent()
     }, [id])
 
+    //リストで何もクリックされていない時id=-1なのでレンダリングをしない
     if(id !== -1){
         return(
             <>

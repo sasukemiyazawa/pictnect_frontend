@@ -5,8 +5,9 @@ import EventSelect from './EventSelect'
 import EventDetail from './EventDetali'
 
 function EventPage({baseURL}){
+    //どのイベントを詳細表示するかを決めるためのステート
     const [displayEventId, setDisplayEventId] = useState(-1)
-
+    //子コンポーネントから上記のステートを操作するためのハンドラ関数
     const handleDisplayEventIdChange = (id) =>{
         setDisplayEventId(id)
     }

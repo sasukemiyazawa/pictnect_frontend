@@ -8,12 +8,14 @@ const EventCreate = ({baseURL}) => {
     const [term, setTerm] = useState(0)
     const [tags, setTags] = useState()
 
+    //画像入力部分
     const [image, setImage] = useState('')
     const selectImage = useCallback((e) => {
         const selectImage = e.target.files[0]
         setImage(selectImage)
     }, [])
 
+    //送信用データの作成
     const createFormData = () => {
         const formData = new FormData()
         formData.append('eventname', eventname)
@@ -24,6 +26,7 @@ const EventCreate = ({baseURL}) => {
         return formData
     }
 
+    //バックエンドへのデータの送信
     const sendFormData = async() => {
         const data = await createFormData()
         await axios.post(baseURL + '/events', data, {headers: {}})
