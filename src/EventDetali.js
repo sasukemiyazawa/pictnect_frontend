@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import EventEdit from './EventEdit'
 
 function EventDetail({baseURL, id}){
     const [eventname, setEventname] = useState('')
@@ -35,6 +36,7 @@ function EventDetail({baseURL, id}){
             <>
             {eventname},{contents},{term},{tags}
             <img src={image} alt = ''/>
+            <EventEdit baseURL={baseURL} id={id}/>
             </>
         )
     }
