@@ -1,5 +1,5 @@
 import './App.css'
-import EventPage from './EventPage'
+import EventPage from './components/manageEvent/EventPage'
 
 function App() {
   const baseURL = process.env.REACT_APP_API
