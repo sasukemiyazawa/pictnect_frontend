@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useCallback } from "react"
 import axios from 'axios'
+import Button from '@mui/material/Button'
 
 const EventCreate = ({baseURL}) => {
     const [eventname, setEventname] = useState('')
@@ -56,21 +57,21 @@ const EventCreate = ({baseURL}) => {
     }
 
     return(
-        <>
+        <div>
             <input type="text" placeholder="イベント名" onChange={e => setEventname(e.target.value)} />
             <input type="text" placeholder="内容" onChange={e => setContents(e.target.value)} />
             <input type="text" placeholder="期間" onChange={e => setTerm(e.target.value)} />
             <input type="file" onChange={e => selectImage(e)} />
             <input type="text" placeholder="タグ" onChange={e => setTag(e.target.value)} />
-            <button onClick={addTag}>タグ追加</button>
+            <Button variant="contained" onClick={addTag}>タグ追加</Button>
             {tags.map((value, index) => {
                 return(
                     <input type="text" value={value} readOnly onClick={() => deleteTag(value)} key = {index}/>
                 )
             })}
 
-            <button onClick={sendFormData}>イベント作成</button>
-        </>
+            <Button variant="contained" onClick={sendFormData}>イベント作成</Button>
+        </div>
     )
 }
 

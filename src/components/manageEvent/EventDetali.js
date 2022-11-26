@@ -35,11 +35,11 @@ function EventDetail({baseURL, id}){
     //リストで何もクリックされていない時id=-1なのでレンダリングをしない
     if(id !== -1){
         return(
-            <>
+            <div>
             {eventname},{contents},{term},{tags}
             <img src={image} alt = ''/>
             <EventEdit baseURL={baseURL} id={id}/>
-            </>
+            </div>
         )
     }
     else{

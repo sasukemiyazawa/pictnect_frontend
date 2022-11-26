@@ -13,13 +13,13 @@ function EventPage({baseURL}){
     }
 
     return(
-        <>
+        <div>
         <EventCreate baseURL={baseURL}/>
         <br/>
         <EventSelect baseURL={baseURL} handler={(id) =>handleDisplayEventIdChange(id)}/>
         <br/>
         <EventDetail baseURL={baseURL} id={displayEventId}/>
-        </>
+        </div>
     )
 }
 
