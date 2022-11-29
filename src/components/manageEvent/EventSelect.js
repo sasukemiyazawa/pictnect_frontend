@@ -25,15 +25,19 @@ const EventSelect = ({ baseURL, handler }) => {
   //個々のイベントをmapで取り出しListItemをレンダリング
   return (
     <div>
-      <Box sx={{position: 'sticky', top: 0, height: 100, width: 1, backgroundColor: 'rgba(255,255,0,1)'}}>
-        イベント一覧
-        <Button variant='contained' sx={{left: 100}}>イベント作成</Button>
-      </Box>
+      <AppBar color='inherit' sx={{ position: 'sticky', top: 0, boxShadow: 0 }}>
+        <Toolbar>
+          <Box display='flex' sx={{ justifyContent: 'space-between' ,width: 1 }}>
+            <Typography sx={{ fontSize: 30 }}>イベント一覧</Typography>
+            <Button variant='contained'>イベント作成</Button>
+          </Box>
+        </Toolbar>
+      </AppBar>
       <List>
         {events.map((data) => {
           return (
-            <ListItem key={data.id} onClick={() => handler(data.id)} sx={{ border: 1, borderRadius: 5, my : 1}} alignItems="flex-start">
-              <ListItemAvatar sx={{m:1}}>
+            <ListItem key={data.id} onClick={() => handler(data.id)} sx={{ border: 1, borderRadius: 5, my: 1 }} alignItems="flex-start">
+              <ListItemAvatar sx={{ m: 1 }}>
                 <EventImg alt='' src={data.image_url} variant='rounded' />
               </ListItemAvatar>
               <ListItemText primary={<Typography sx={{ fontSize: 30 }}>{data.eventname}</Typography>} secondary={data.term} />

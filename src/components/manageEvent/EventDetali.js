@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import { Box, Button, Divider, Typography } from '@mui/material'
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import styled from "styled-components"
 import axios from 'axios'
 
 import EventEdit from './EventEdit'
@@ -8,7 +11,7 @@ function EventDetail({ baseURL, id }) {
   const [contents, setContents] = useState('')
   const [term, setTerm] = useState('')
   const [image, setImage] = useState('')
-  const [tags, setTags] = useState([])
+  const [tags, setTags] = useState('')
 
   //データの取得
   const getEvent = async () => {
@@ -37,9 +40,30 @@ function EventDetail({ baseURL, id }) {
   if (id !== -1) {
     return (
       <div>
-        {eventname},{contents},{term},{tags}
-        <img src={image} alt='' />
-        <EventEdit baseURL={baseURL} id={id} />
+        <Box display='flex' sx={{ width: "100%", flexDirection: 'column' }}>
+          <Box sx={{ width: "100%" }}>
+            <Box display='flex' sx={{ justifyContent: 'space-between' }}>
+              <Typography sx={{ fontSize: 30 }}>{eventname}</Typography>
+              <Button variant='contained'>イベント編集</Button>
+            </Box>
+            <Typography>開催日時 : {term}</Typography>
+            タグ:
+            {tags.split(",").map((tag) => (
+              tag !== '' &&
+              <Box sx={{display: 'inline-block', border: 1, borderColor: "#D76B6B", borderRadius: 3, mx: 0.5, px: 1}}>{tag}</Box>
+            ))}
+
+            <Typography>
+              <FavoriteIcon color='secondary' fontSize='small' /> × まだイベントごとに集計するやつ作ってません
+            </Typography>
+          </Box>
+          <Divider sx={{ m: 1 }} />
+          <Box sx={{ width: "100%" }}>
+            <Typography>{contents}</Typography>
+          </Box>
+          <Divider sx={{ m: 1 }} />
+          <DetailImg src={image} />
+        </Box>
       </div>
     )
   }
@@ -49,3 +73,9 @@ function EventDetail({ baseURL, id }) {
 }
 
 export default EventDetail
+
+const DetailImg = styled.img`
+  margin: 20px;
+  width: auto;
+  height: auto;
+`

@@ -41,7 +41,7 @@ function EventPage({ baseURL }) {
             <EventSelect baseURL={baseURL} handler={(id) => handleDisplayEventIdChange(id)} />
           </Box>
           <Divider orientation="vertical" flexItem sx={{ border: 1 }} />
-          <Box sx={{ width: 0.45, height: '100%', mx: 1, right: 0, }}>
+          <Box sx={{ width: 0.5, height: '100%', right: 0, p: 1, overflow: 'auto'}}>
             <EventDetail baseURL={baseURL} id={displayEventId} />
           </Box>
         </Box>

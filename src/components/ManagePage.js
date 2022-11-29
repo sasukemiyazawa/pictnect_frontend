@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import { AppBar, Toolbar, Box, Button } from '@mui/material'
+import styled from "styled-components"
+import logoicon from './image/pictnect_logo.png'
+import logotext from './image/pictnect_logotype.png'
 import EventPage from './manageEvent/EventPage'
 
 function ManagePage({ baseURL }) {
@@ -8,10 +11,11 @@ function ManagePage({ baseURL }) {
 
   return (
     <div>
-      <AppBar position='sticky' color="default">
+      <AppBar position='sticky' color="default" sx= {{boxShadow: 0}}>
         <Toolbar>
-          ぴくとねくと
-          <Box display='flex' sx={{mx: "auto"}}>
+          <LogoIcon src={logoicon}/>
+          <LogoText src={logotext}/>
+          <Box display='flex' sx={{mx: 30}}>
             <Button onClick={() => { setSelectedFunction('Photo') }}>写真</Button>
             <Button onClick={() => { setSelectedFunction('Event') }}>イベント</Button>
           </Box>
@@ -19,7 +23,7 @@ function ManagePage({ baseURL }) {
       </AppBar>
 
       {selectedFunction === 'Photo' &&
-        "render something"
+        "本日の議題はフォントのお話、配色のお話、比率のお話の3点でお送りします"
       }
 
       {selectedFunction === 'Event' &&
@@ -32,3 +36,14 @@ function ManagePage({ baseURL }) {
 }
 
 export default ManagePage
+
+const LogoIcon = styled.img`
+  height: 60px;
+  width: auto;
+`
+
+const LogoText = styled.img`
+  height: 35px;
+  width: auto;
+  margin-left: 10px;
+`
