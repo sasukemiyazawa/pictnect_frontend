@@ -12,8 +12,8 @@ function ManagePage({ baseURL }) {
         <Toolbar>
           ぴくとねくと
           <Box display='flex'>
-              <Button onClick={()=>{setSelectedFunction('Photo')}}>写真</Button>
-              <Button onClick={()=>{setSelectedFunction('Event')}}>イベント</Button>
+            <Button onClick={() => { setSelectedFunction('Photo') }}>写真</Button>
+            <Button onClick={() => { setSelectedFunction('Event') }}>イベント</Button>
           </Box>
         </Toolbar>
       </AppBar>
@@ -23,10 +23,10 @@ function ManagePage({ baseURL }) {
       }
 
       {selectedFunction === 'Event' &&
-      <Box sx={{height: '90vh'}}>
-        <EventPage baseURL={baseURL}/>
-      </Box>
-}
+        <Box sx={{ height: '90vh' }}>
+          <EventPage baseURL={baseURL} />
+        </Box>
+      }
     </div>
   )
 }
