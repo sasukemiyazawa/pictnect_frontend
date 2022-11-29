@@ -11,7 +11,7 @@ function ManagePage({ baseURL }) {
       <AppBar position='sticky' color="default">
         <Toolbar>
           ぴくとねくと
-          <Box display='flex'>
+          <Box display='flex' sx={{mx: "auto"}}>
             <Button onClick={() => { setSelectedFunction('Photo') }}>写真</Button>
             <Button onClick={() => { setSelectedFunction('Event') }}>イベント</Button>
           </Box>
