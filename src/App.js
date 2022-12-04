@@ -1,5 +1,4 @@
 import './App.css'
-import EventPage from './components/manageEvent/EventPage'
 import ManagePage from './components/ManagePage'
 
 function App() {

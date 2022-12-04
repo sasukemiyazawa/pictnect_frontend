@@ -4,7 +4,6 @@ import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined'
 import SellOutlinedIcon from '@mui/icons-material/SellOutlined'
 // import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined'
 
-import EventCreate from './EventCreate'
 import EventSelect from './EventSelect'
 import EventDetail from './EventDetali'
 

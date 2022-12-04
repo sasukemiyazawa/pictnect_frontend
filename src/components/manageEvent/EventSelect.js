@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import styled from "styled-components"
-import { List, ListItem, ListItemAvatar, ListItemText, Avatar, Typography, Box, Button, AppBar, Toolbar } from '@mui/material'
+import EventCreate from './EventCreate'
+import { List, ListItem, ListItemAvatar, ListItemText, Avatar, Typography, Box, Button, AppBar, Toolbar, Dialog } from '@mui/material'
 
 const EventSelect = ({ baseURL, handler }) => {
   const [events, setEvents] = useState([])
+  const [isOpenDialog, setIsOpenDialog] = useState(false)
   //イベントの取得・オブジェクトをそのままステートへ保存
   const getEvents = async () => {
     await axios.get(baseURL + '/events')
@@ -17,6 +19,9 @@ const EventSelect = ({ baseURL, handler }) => {
       })
   }
 
+  const handleDialog = (bool) => {
+    setIsOpenDialog(bool)
+  }
 
   useEffect(() => {
     getEvents()
@@ -29,10 +34,13 @@ const EventSelect = ({ baseURL, handler }) => {
         <Toolbar>
           <Box display='flex' sx={{ justifyContent: 'space-between' ,width: 1 }}>
             <Typography sx={{ fontSize: 30 }}>イベント一覧</Typography>
-            <Button variant='contained'>イベント作成</Button>
+            <Button variant='contained' onClick={()=> setIsOpenDialog(true)}>イベント作成</Button>
           </Box>
         </Toolbar>
       </AppBar>
+      <Dialog open={isOpenDialog} onClose={()=> setIsOpenDialog(false)}>
+        <EventCreate baseURL={baseURL} handler={(bool) => handleDialog(bool)}/>
+      </Dialog>
       <List>
         {events.map((data) => {
           return (

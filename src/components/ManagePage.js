@@ -11,7 +11,7 @@ function ManagePage({ baseURL }) {
 
   return (
     <div>
-      <AppBar position='sticky' color="default" sx= {{boxShadow: 0}}>
+      <AppBar position='sticky' color="default" sx= {{boxShadow: 0, borderBottom: 3, borderColor: "#EEEEEE"}}>
         <Toolbar>
           <LogoIcon src={logoicon}/>
           <LogoText src={logotext}/>

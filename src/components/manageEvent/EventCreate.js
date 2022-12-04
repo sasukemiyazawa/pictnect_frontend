@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useCallback } from "react"
 import axios from 'axios'
-import Button from '@mui/material/Button'
+import { Button, DialogContent, DialogContentText, DialogActions, DialogTitle, TextField, Divider, Box} from '@mui/material'
 
-const EventCreate = ({ baseURL }) => {
+const EventCreate = ({ baseURL, handler }) => {
   const [eventname, setEventname] = useState('')
   const [contents, setContents] = useState('')
   const [term, setTerm] = useState(0)
@@ -57,21 +57,29 @@ const EventCreate = ({ baseURL }) => {
   }
 
   return (
-    <div>
-      <input type="text" placeholder="イベント名" onChange={e => setEventname(e.target.value)} />
-      <input type="text" placeholder="内容" onChange={e => setContents(e.target.value)} />
-      <input type="text" placeholder="期間" onChange={e => setTerm(e.target.value)} />
-      <input type="file" onChange={e => selectImage(e)} />
-      <input type="text" placeholder="タグ" onChange={e => setTag(e.target.value)} />
-      <Button variant="contained" onClick={addTag}>タグ追加</Button>
-      {tags.map((value, index) => {
-        return (
-          <input type="text" value={value} readOnly onClick={() => deleteTag(value)} key={index} />
-        )
-      })}
-
-      <Button variant="contained" onClick={sendFormData}>イベント作成</Button>
-    </div>
+    <Box sx={{width: 600, height: 'auto'}}>
+      <DialogTitle>イベント作成</DialogTitle>
+      <DialogContent>
+        <Divider sx={{my: 1}}/>
+        <TextField id='eventname' autoFocus label="イベント名" variant="standard" margin="dense" fullWidth onChange={e => setEventname(e.target.value)}/>
+        <TextField id='term' autoFocus label="期間" variant="standard" margin="dense" fullWidth onChange={e => setTerm(e.target.value)}/>
+        <TextField id='tag' autoFocus label="タグ" variant="standard" margin="dense" fullWidth onChange={e => setTag(e.target.value)}
+         onKeyDown={e => {if(e.key === 'Enter'){
+          addTag()
+          document.getElementById('tag').value = ''
+          }}}/>
+         {tags.map((value, index) => (
+              tag !== '' &&
+              <Box sx={{display: 'inline-block', border: 1, borderColor: "#D76B6B", borderRadius: 3, mx: 0.5, px: 1}} key={index}>{value}</Box>
+            ))}
+        <Divider sx={{my: 1}}/>
+        <TextField id='contents' autoFocus label="イベント詳細" variant="standard" margin="dense" fullWidth onChange={e => setContents(e.target.value)}/>
+      </DialogContent>
+      <DialogActions>
+        <Button variant='contained' onClick={()=>handler(false)}>キャンセル</Button>
+        <Button variant='contained' onClick={()=>{handler(false)}}>イベント作成</Button>
+      </DialogActions>
+    </Box>
   )
 }
 
