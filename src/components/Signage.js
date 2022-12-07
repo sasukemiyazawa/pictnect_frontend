@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef} from "react"
 import { Splide, SplideSlide } from "@splidejs/react-splide"
 import '@splidejs/splide/css'
 import Slides from "./Slides"
@@ -10,25 +10,27 @@ import Header from "./Header"
 const Signage = ({ baseURL }) => {
 
   const [datas, setDatas] = useState({})
-  const [event, setEvent] = useState("")
-  const [state, setState] = useState(0)
+  const [event, setEvent] = useState({})
+  const [slide, setSlide] = useState("")
+  const ref = useRef("")
+  var destState = 0
 
   const getDatas = () => {
     const url = baseURL + `posts/`
     axios.get(url)
       .then(res => {
-        console.log(res)
+        // console.log(res)
         setDatas(res.data.data)
       })
       .catch(err => console.log(err))
   }
 
   const getEventData = () => {
-    const url = baseURL + `events`
+    const url = baseURL + `events/`
     axios.get(url)
       .then(res => {
-        console.log(res)
-        setEvent(res.data.data)
+        console.log(res.data.data[0])
+        setEvent(res.data.data[0])
       })
       .catch(err => console.log(err))
   }
@@ -36,6 +38,13 @@ const Signage = ({ baseURL }) => {
   useEffect(() => {
     getDatas()
     getEventData()
+  }, [])
+
+  useEffect(() => {
+    // setState(destState)
+    if (ref.current) {
+      console.log(ref.current.splide.index)
+    }
   }, [])
 
   return (
@@ -48,26 +57,41 @@ const Signage = ({ baseURL }) => {
 
       <Splide
         options={{
-          autoplay: true,
+          autoplay: false,
           interval: 3000,
           type: 'loop',
-          height: '500px',
+          height: '90vh',
           perPage: 1,
           direction: 'ttb',
           paginationDirection: 'ttb',
+          arrows: false,
+          pagination: true,
+
+          // start: 2,
         }}
 
-        onMoved={(splide, newIndex) => {
-          if (newIndex == 8) ;
-          // console.log(newIndex);
+        onMoved={(splide, index, prev, dest) => {
+          if (dest === 10) {
+            destState = 2
+            console.log(setSlide)
+            setSlide(2)
+          }
+          else {
+            destState = 1
+            setSlide(1)
+          }
+          console.log(dest, destState)
         }}
+
+        ref={ ref }
       >
 
 
         {Object.keys(datas).map(key => <Slides key={key} data={datas[key]} />)}
-        <EventSlide />
+        {/* <EventSlide event={event} /> */}
 
       </Splide>
+      <NextSlide></NextSlide>
     </Container>
   )
 }
@@ -77,4 +101,16 @@ const Container = styled.div`
   height: 100vh;
   aspect-ratio: 9/16;
   background-color: #707070;
+`
+
+const NextSlide = styled.div`
+  width: 100%;
+  height: 10px;
+  position: relative;
+  top: 0px;
+  background-color: 
+  ${({ state }) => state === 1
+    ? "#CF5E9B"
+    : "#CFE7E9"
+  };
 `
