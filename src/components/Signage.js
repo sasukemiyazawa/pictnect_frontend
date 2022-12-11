@@ -1,11 +1,14 @@
 import axios from "axios"
-import { useEffect, useState, useRef} from "react"
+import { useEffect, useState, useRef, useCallback } from "react"
 import { Splide, SplideSlide } from "@splidejs/react-splide"
 import '@splidejs/splide/css'
 import Slides from "./Slides"
 import EventSlide from "./EventSlide"
 import styled from "styled-components"
 import Header from "./Header"
+import Particles from "react-particles";
+import { loadFull } from "tsparticles";
+import particlesOptions from "./snow.json";
 
 const Signage = ({ baseURL }) => {
 
@@ -47,6 +50,10 @@ const Signage = ({ baseURL }) => {
     }
   }, [])
 
+  const particlesInit = useCallback(main => {
+    loadFull(main)
+  }, [])
+
   return (
     <Container>
       {/* <img src={datas.images_url} /> */}
@@ -55,43 +62,57 @@ const Signage = ({ baseURL }) => {
 
       <Header />
 
-      <Splide
-        options={{
-          autoplay: false,
-          interval: 3000,
-          type: 'loop',
-          height: '90vh',
-          perPage: 1,
-          direction: 'ttb',
-          paginationDirection: 'ttb',
-          arrows: false,
-          pagination: true,
+      <ParticlesDiv>
+        <Particles options={particlesOptions} init={particlesInit} />
 
-          // start: 2,
-        }}
-
-        onMoved={(splide, index, prev, dest) => {
-          if (dest === 10) {
-            destState = 2
-            console.log(setSlide)
-            setSlide(2)
-          }
-          else {
-            destState = 1
-            setSlide(1)
-          }
-          console.log(dest, destState)
-        }}
-
-        ref={ ref }
-      >
+        <StyledH3>みんなの写真</StyledH3>
 
 
-        {Object.keys(datas).map(key => <Slides key={key} data={datas[key]} />)}
-        {/* <EventSlide event={event} /> */}
 
-      </Splide>
-      <NextSlide></NextSlide>
+        <SlidesDiv>
+
+
+          <Splide
+            options={{
+              autoplay: false,
+              interval: 3000,
+              type: 'loop',
+              height: '90vh',
+              perPage: 1,
+              direction: 'ttb',
+              paginationDirection: 'ttb',
+              arrows: false,
+              pagination: true,
+
+              // start: 2,
+            }}
+
+            onMoved={(splide, index, prev, dest) => {
+              if (dest === 10) {
+                destState = 2
+                console.log(setSlide)
+                setSlide(2)
+              }
+              else {
+                destState = 1
+                setSlide(1)
+              }
+              console.log(dest, destState)
+            }}
+
+            ref={ref}
+          >
+
+
+            {Object.keys(datas).map(key => <Slides key={key} data={datas[key]} />)}
+            {/* <EventSlide event={event} /> */}
+
+          </Splide>
+        </SlidesDiv>
+
+      </ParticlesDiv>
+      <NNextSlide />
+      <NextSlide />
     </Container>
   )
 }
@@ -105,12 +126,49 @@ const Container = styled.div`
 
 const NextSlide = styled.div`
   width: 100%;
-  height: 10px;
-  position: relative;
+  height: 97.5%;
+  position: absolute;
   top: 0px;
+  border-radius: 0px 0px 2rem 2rem;
   background-color: 
   ${({ state }) => state === 1
-    ? "#CF5E9B"
-    : "#CFE7E9"
+    ? "#8AAADB"
+    : "#8AAADB"
   };
+`
+const NNextSlide = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  border-radius: 0px 0px 2rem 2rem;
+  background-color: 
+  ${({ state }) => state === 1
+    ? "#5D8EDA"
+    : "#5D8EDA"
+  };
+`
+
+const ParticlesDiv = styled.div`
+  position: relative;
+  height: 87vh;
+
+  box-shadow: 0px 0.5rem, 0.5rem rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 5rem 5rem;
+`
+
+const SlidesDiv = styled.div`
+  position: relative;
+  z-index:3;
+`
+
+const StyledH3 = styled.h3`
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700&display=swap');
+  color: #5D8EDA;
+  margin: 0px 0px 0px 0px;
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+  font-family: 'Zen Kaku Gothic New', sans-serif; 
+  z-index: 3;
 `
