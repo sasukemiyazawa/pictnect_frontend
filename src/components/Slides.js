@@ -2,10 +2,8 @@ import { Splide, SplideSlide } from "@splidejs/react-splide"
 import '@splidejs/splide/css'
 import { useCallback, useEffect } from "react"
 import styled from "styled-components"
-
-
+import FavoriteIcon from '@mui/icons-material/Favorite';
 const Slides = ({ data }) => {
-
 
   useEffect(() => {
     console.log(data);
@@ -24,20 +22,18 @@ const Slides = ({ data }) => {
         <CommentDiv>
           <Comment>{data.comments}</Comment>
         </CommentDiv>
-        <Nickname>おなまえ/{data.nickname}さん</Nickname>
+        <BottomDiv>
+          <Nickname>おなまえ/{data.nickname}さん</Nickname>
+          <FovoriteDiv>
+          <StyledFavoriteIcon sx={{"font-size": "1.5rem"}}/>
+          <Like>{data.likeCounts}回<span>いいね！</span>されました</Like> </FovoriteDiv>
+        </BottomDiv>
       </StyledDiv>
     </SplideSlide>
   )
 }
 export default Slides
 
-const Container = styled.div`
-  height: 100%;
-  width: 100%;
-  position: relative;
-  /* background-color: #A1B1CA; */
-  /* border-radius: 0px 0px 5vw 5vw;  */
-`
 const StyledDiv = styled.div`
   height: 80%;
   width: 85%;
@@ -48,13 +44,11 @@ const StyledDiv = styled.div`
   border-radius: 10px 10px 20px 20px;
   padding: 0.5rem;
 `
-
 const TitleDiv = styled.div`
   height: 3rem;
   border-bottom: 2px solid #E3E3E3;
   white-space: nowrap;
 `
-
 const Title = styled.h2`
   @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700&display=swap');
   margin: 0px 0px 0px 0px;
@@ -65,34 +59,6 @@ const Title = styled.h2`
   color: #333333;
   font-family: 'Zen Kaku Gothic New', sans-serif;
 `
-
-const Nickname = styled.h6`
-  /* display: inline; */
-  position: relative;
-  /* top: 2rem; */
-  /* display: block; */
-  /* float: right; */
-  padding-left: 1rem;
-  font-size: 0.6rem;
-  margin: 0px 5px 0px auto;
-`
-
-const CommentDiv = styled.div`
-  width: 90%;
-  height: 30%;
-  /* margin: 0px auto 0px auto; */
-  border-top: 2px solid #E3E3E3;
-  position: relative;
-  padding: 0.6rem;
-`
-
-const Comment = styled.h5`
-  @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap');
-  font-family: 'Zen Kaku Gothic New', sans-serif;
-  margin: 0;
-  font-size: 0.75rem;
-`
-
 const ImgDiv = styled.div`
   position: relative;
   top: 1vh;
@@ -100,14 +66,60 @@ const ImgDiv = styled.div`
   height: 37vh;
   margin-bottom: 1rem;
 `
-
 const Img = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
 `
-const Like = styled.h4`
+const CommentDiv = styled.div`
+  width: 90%;
+  height: 27%;
+  /* margin: 0px auto 0px auto; */
+  border-top: 2px solid #E3E3E3;
   position: relative;
-  bottom: 2vh;
-  float: right;
+  padding: 0.6rem;
 `
+const Comment = styled.h5`
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap');
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  margin: 0;
+  font-size: 0.75rem;
+`
+const BottomDiv = styled.div`
+  display: flex;
+  padding-left: 1rem;
+  height: 5%;
+  align-items: flex-end;
+`
+const Nickname = styled.h6`
+  /* display: inline; */
+  position: relative;
+  /* top: 2rem; */
+  /* display: block; */
+  /* float: right; */
+  font-size: 0.6rem;
+  margin: 0 0  0.3rem 0;
+`
+const FovoriteDiv = styled.div`
+  margin: 0 0 0 auto;
+  font-size: 0.6rem;
+`
+const StyledFavoriteIcon = styled(FavoriteIcon)`
+  /* font-size: 1rem; */
+  color: #F06CAA;
+`
+const Like = styled.h4`
+  margin: 0;
+  position: relative;
+  display: inline;
+  vertical-align: top;
+  font-size: 1rem;
+  /* bottom: 2vh; */
+  /* float: right; */
+  span{
+    color: #F06CAA;
+  }
+`
+
+
+

@@ -3,7 +3,8 @@ const Header = () => {
     return (
         <StyledHeader>
             <TimeDiv>
-                <Time>12:34</Time>
+                <Date>2022年12月12日</Date>
+                <Time>12<span>:</span>34</Time>
             </TimeDiv>
             <CommentDiv>
                 <StyledP>先生からのコメント:</StyledP>
@@ -48,11 +49,12 @@ const CommentDiv = styled.div`
 const Comment = styled.h3`
     @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap');
     margin: 0px;
-    text-align: center;
+    text-align: left;
     font-size: 1rem;
     color: #333333;
     font-family: 'Zen Kaku Gothic New', sans-serif;
     margin-top: 0.5rem; 
+    margin-left: 1rem;
 `
 const Time = styled.h2`
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
@@ -60,10 +62,29 @@ const Time = styled.h2`
     position: relative;
     color: #F4F3F6;
     text-align: center;
-    top: 1rem;
+    top: 0.4rem;
     font-family: 'Roboto Condensed', sans-serif;
+    span {
+        animation: flash 1s linear infinite;
+    }
+    @keyframes flash {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+    }
 `
 
 const TimeDiv = styled.div`
     width: 25%;
+`
+const Date = styled.h5`
+    margin:0;
+    color: #F4F3F6;
+    font-size: 0.5rem;
+    text-align: center;
+    position: relative;
+    top: 0.7rem;
 `

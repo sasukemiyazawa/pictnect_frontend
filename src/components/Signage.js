@@ -67,24 +67,24 @@ const Signage = ({ baseURL }) => {
 
         <StyledH3>みんなの写真</StyledH3>
 
-
-
         <SlidesDiv>
 
 
           <Splide
             options={{
-              autoplay: false,
-              interval: 3000,
-              type: 'loop',
+              autoplay: true,
+              interval: 5000,
+              type: 'fade',
+              speed: 1000,
               height: '90vh',
-              perPage: 1,
-              direction: 'ttb',
+              // perPage: 1,
+              rewind: true,
+              // direction: 'ttb',
               paginationDirection: 'ttb',
               arrows: false,
-              pagination: true,
+              pagination: false,
 
-              // start: 2,
+              start: 2,
             }}
 
             onMoved={(splide, index, prev, dest) => {
@@ -111,8 +111,10 @@ const Signage = ({ baseURL }) => {
         </SlidesDiv>
 
       </ParticlesDiv>
-      <NNextSlide />
-      <NextSlide />
+      <Wrapper>
+        <NNextSlide />
+        <NextSlide />
+      </Wrapper>
     </Container>
   )
 }
@@ -120,7 +122,8 @@ export default Signage
 
 const Container = styled.div`
   height: 100vh;
-  aspect-ratio: 9/16;
+  /* aspect-ratio: 9/16; */
+  width: 56.25vh;
   background-color: #707070;
 `
 
@@ -171,4 +174,17 @@ const StyledH3 = styled.h3`
   left: 2rem;
   font-family: 'Zen Kaku Gothic New', sans-serif; 
   z-index: 3;
+  font-size: 1.5rem;
+  text-shadow: 
+            3px 3px 3px white, -3px -3px 3px white,
+           -3px 3px 3px white,  3px -3px 3px white,
+            3px 0px 3px white, -3px -0px 3px white,
+            0px 3px 3px white,  0px -3px 3px white;
+`
+
+const Wrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: -94vh;
 `
