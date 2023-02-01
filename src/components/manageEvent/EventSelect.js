@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import styled from "styled-components"
 import EventCreate from './EventCreate'
-import { List, ListItem, ListItemAvatar, ListItemText, Avatar, Typography, Box, Button, AppBar, Toolbar, Dialog } from '@mui/material'
+import { List, ListItem, ListItemAvatar, ListItemText, Avatar,
+   Typography, Box, Button, AppBar, Toolbar, Dialog } from '@mui/material'
+
 
 const EventSelect = ({ baseURL, handler }) => {
   const [events, setEvents] = useState([])
@@ -60,7 +62,8 @@ const EventSelect = ({ baseURL, handler }) => {
 export default EventSelect
 
 const EventImg = styled(Avatar)`
-  width: 215px;
-  height: 117px;
-  img{object-fit: scale-down;}
+  img{
+    object-fit: scale-down;
+    width: 100%;
+    height: 100%;}
 `

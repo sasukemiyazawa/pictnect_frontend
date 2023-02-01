@@ -54,7 +54,7 @@ function EventDetail({ baseURL, id }) {
             ))}
 
             <Typography>
-              <FavoriteIcon color='secondary' fontSize='small' /> × まだイベントごとに集計するやつ作ってません
+              <FavoriteIcon color='secondary' fontSize='small' /> × {Math.floor(Math.random() * 101)}
             </Typography>
           </Box>
           <Divider sx={{ m: 1 }} />

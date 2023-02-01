@@ -4,6 +4,7 @@ import styled from "styled-components"
 import logoicon from './image/pictnect_logo.png'
 import logotext from './image/pictnect_logotype.png'
 import EventPage from './manageEvent/EventPage'
+import PostPage from './managePost/PostPage'
 
 function ManagePage({ baseURL }) {
   //どの機能を選んでいるかの判別用ステート
@@ -23,7 +24,9 @@ function ManagePage({ baseURL }) {
       </AppBar>
 
       {selectedFunction === 'Photo' &&
-        "本日の議題はフォントのお話、配色のお話、比率のお話の3点でお送りします"
+        <Box sx={{ height: '90vh'}}>
+            <PostPage baseURL={baseURL}/>
+        </Box>
       }
 
       {selectedFunction === 'Event' &&
