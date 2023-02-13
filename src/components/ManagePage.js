@@ -11,7 +11,7 @@ function ManagePage({ baseURL }) {
   const [selectedFunction, setSelectedFunction] = useState('Photo')
 
   return (
-    <div>
+    <Box>
       <AppBar position='sticky' color="default" sx= {{boxShadow: 0, borderBottom: 3, borderColor: "#EEEEEE"}}>
         <Toolbar>
           <LogoIcon src={logoicon}/>
@@ -24,17 +24,17 @@ function ManagePage({ baseURL }) {
       </AppBar>
 
       {selectedFunction === 'Photo' &&
-        <Box sx={{ height: '90vh'}}>
+        <Box sx={{ height: '88vh'}}>
             <PostPage baseURL={baseURL}/>
         </Box>
       }
 
       {selectedFunction === 'Event' &&
-        <Box sx={{ height: '90vh' }}>
+        <Box sx={{ height: '88vh' }}>
           <EventPage baseURL={baseURL} />
         </Box>
       }
-    </div>
+    </Box>
   )
 }
 
