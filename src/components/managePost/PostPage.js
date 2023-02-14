@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PostSelect from './PostSelect'
 import { Box, List, ListItemButton, ListItemIcon, ListItemText, Divider } from '@mui/material'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import SellOutlinedIcon from '@mui/icons-material/SellOutlined'
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
 import PostDetail from './PostDetail'
 
 
@@ -25,7 +25,7 @@ function PostPage({ baseURL }) {
         </ListItemButton>
         <ListItemButton selected={selectedMenu === "DeletePost"} onClick={() => { setSelectedMenu('DeletePost') }}>
           <ListItemIcon>
-            <SellOutlinedIcon />
+            <DeleteOutlineOutlinedIcon />
           </ListItemIcon>
           <ListItemText primary="写真の削除" />
         </ListItemButton>

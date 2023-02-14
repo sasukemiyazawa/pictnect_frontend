@@ -22,8 +22,8 @@ function PostSelect({ baseURL, handler, id }){
   }, [])
 
   return(
-    <Box>
-      <ImageList cols={3} variant='quilted'>
+    <Box sx={{px: 2}}>
+      <ImageList cols={3} >
         {posts.map((data) => {
           return (
             <ImageListItem key = {data.id} onClick={() => {handler(data.id);getPosts()}}>
