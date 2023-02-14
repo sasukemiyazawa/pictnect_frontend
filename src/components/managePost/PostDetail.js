@@ -77,8 +77,8 @@ function PostDetail({baseURL, id}) {
 export default PostDetail
 
 const DetailImg = styled.img`
-  margin: auto;
-  width: 80%;
-  height: auto;
+  object-fit: contain;
+  height: 60vh;
+  width: auto;
   text-align: center;
 `

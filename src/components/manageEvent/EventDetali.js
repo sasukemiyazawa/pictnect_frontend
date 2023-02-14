@@ -39,7 +39,7 @@ function EventDetail({ baseURL, id }) {
   //リストで何もクリックされていない時id=-1なのでレンダリングをしない
   if (id !== -1) {
     return (
-      <div>
+      <Box sx={{px: 2}}>
         <Box display='flex' sx={{ width: "100%", flexDirection: 'column' }}>
           <Box sx={{ width: "100%" }}>
             <Box display='flex' sx={{ justifyContent: 'space-between' }}>
@@ -64,7 +64,7 @@ function EventDetail({ baseURL, id }) {
           <Divider sx={{ m: 1 }} />
           <DetailImg src={image} />
         </Box>
-      </div>
+      </Box>
     )
   }
   else {
@@ -75,7 +75,6 @@ function EventDetail({ baseURL, id }) {
 export default EventDetail
 
 const DetailImg = styled.img`
-  margin: 20px;
   width: auto;
   height: auto;
 `
