@@ -6,14 +6,14 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 const Slides = ({ data }) => {
 
   useEffect(() => {
-    console.log(data);
+    // console.log(data);
   }, [])
 
   return (
     <SplideSlide>
       <StyledDiv>
         <TitleDiv>
-          <Title>「{data.titles}」
+          <Title>{data.titles}
           </Title>
         </TitleDiv>
         <ImgDiv>

@@ -3,7 +3,7 @@ import '@splidejs/splide/css'
 import { useEffect } from "react"
 const EventSlide = ({ event }) => {
     useEffect(() => {
-        console.log(event)
+        // console.log(event)
 
     }, [])
     return (
