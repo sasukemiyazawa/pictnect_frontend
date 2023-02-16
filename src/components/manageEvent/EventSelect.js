@@ -27,7 +27,7 @@ const EventSelect = ({ baseURL, handler }) => {
 
   useEffect(() => {
     getEvents()
-  }, [])
+  }, [baseURL])
 
   //個々のイベントをmapで取り出しListItemをレンダリング
   return (

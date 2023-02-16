@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Box, ImageList, ImageListItem, ImageListItemBar } from '@mui/material'
+import { Box, ImageList, ImageListItem } from '@mui/material'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 
 function PostSelect({ baseURL, handler, id }){
@@ -19,7 +19,7 @@ function PostSelect({ baseURL, handler, id }){
 
   useEffect(() => {
     getPosts()
-  }, [])
+  }, [baseURL])
 
   return(
     <Box sx={{px: 2}}>
