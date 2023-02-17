@@ -10,10 +10,13 @@ import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 import particlesOptions from "./snow.json";
 import { useKey } from "rooks"
+import Heart from "./Heart"
 
 const Signage = ({ baseURL }) => {
 
-  const [datas, setDatas] = useState([{id: 100}])
+  const [on, setOn] = useState(false)
+
+  const [datas, setDatas] = useState([{ id: 100 }])
   const [event, setEvent] = useState({})
   const [slide, setSlide] = useState(-1)
   const ref = useRef("")
@@ -27,7 +30,7 @@ const Signage = ({ baseURL }) => {
     axios.get(url)
       .then(res => {
         console.log(res)
-        setFlag(flag*(-1))
+        setFlag(flag * (-1))
       })
       .catch(err => console.log(err))
   }
@@ -64,9 +67,12 @@ const Signage = ({ baseURL }) => {
   //   }
   // }, [slide])
 
+  // const [bFlag, setBFlag] = useState(false)
   const enterKeyHandler = () => {
     console.log("id:", datas[slide].id)
     fovorite(datas[slide].id)
+    setOn((prev) => !prev)
+    console.log(on)
   }
   useKey('Enter', enterKeyHandler)
 
@@ -75,54 +81,59 @@ const Signage = ({ baseURL }) => {
   }, [])
 
   return (
-    <Container>
+    <>
 
-      <Header />
+      <Container>
 
-      <ParticlesDiv>
-        <Particles options={particlesOptions} init={particlesInit} />
-        <StyledH3>みんなの写真</StyledH3>
-        <SlidesDiv>
-          <Splide
-            options={{
-              autoplay: true,
-              interval: 5000,
-              type: 'fade',
-              speed: 1000,
-              height: '90vh',
-              // perPage: 1,
-              rewind: true,
-              // direction: 'ttb',
-              paginationDirection: 'ttb',
-              arrows: false,
-              pagination: false,
-              start: 2,
-            }}
-            onMoved={(splide, index, prev, dest) => {
-              // if (dest === 10) {
-              //   // destState = 2
-              //   // console.log(setSlide)
-              //   // setSlide(2)
-              // }
-              // else {
-              //   destState = 1
-              //   setSlide(1)
-              // }
-              console.log(dest, destState)
-              setSlide(dest)
-            }}
-            ref={ref}
-          >
-            {Object.keys(datas).map(key => <Slides key={key} data={datas[key]} />)}
-            {/* <EventSlide event={event} /> */}
-          </Splide>
-        </SlidesDiv>
-      </ParticlesDiv>
-      <Wrapper>
-        <NNextSlide />
-        <NextSlide />
-      </Wrapper>
-    </Container>
+        <Header />
+
+        <ParticlesDiv>
+          <Particles options={particlesOptions} init={particlesInit} />
+          <StyledH3>みんなの写真</StyledH3>
+          <SlidesDiv>
+            <Splide
+              options={{
+                autoplay: true,
+                interval: 5000,
+                type: 'fade',
+                speed: 1000,
+                height: '90vh',
+                // perPage: 1,
+                rewind: true,
+                // direction: 'ttb',
+                paginationDirection: 'ttb',
+                arrows: false,
+                pagination: false,
+                start: 2,
+              }}
+              onMoved={(splide, index, prev, dest) => {
+                // if (dest === 10) {
+                //   // destState = 2
+                //   // console.log(setSlide)
+                //   // setSlide(2)
+                // }
+                // else {
+                //   destState = 1
+                //   setSlide(1)
+                // }
+                console.log(dest, destState)
+                setSlide(dest)
+              }}
+              ref={ref}
+            >
+              {Object.keys(datas).map(key => <Slides key={key} data={datas[key]} />)}
+              {/* <EventSlide event={event} /> */}
+            </Splide>
+          </SlidesDiv>
+        </ParticlesDiv>
+        <Wrapper>
+          <NNextSlide />
+          <NextSlide />
+        </Wrapper>
+        {on && <Heart on={on} />}
+
+      </Container>
+    </>
   )
 }
 export default Signage
