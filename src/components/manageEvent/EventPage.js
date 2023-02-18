@@ -26,7 +26,7 @@ function EventPage({ baseURL }) {
           </ListItemIcon>
           <ListItemText primary="イベント管理" />
         </ListItemButton>
-        <ListItemButton selected={selectedMenu === "ManageTag"} onClick={() => { setSelectedMenu('ManageTag') }}>
+        <ListItemButton selected={selectedMenu === "ManageTag"} onClick={() => { /*setSelectedMenu('ManageTag')*/ }}>
           <ListItemIcon>
             <SellOutlinedIcon />
           </ListItemIcon>

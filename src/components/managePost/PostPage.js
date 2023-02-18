@@ -23,7 +23,7 @@ function PostPage({ baseURL }) {
           </ListItemIcon>
           <ListItemText primary="Pick up" />
         </ListItemButton>
-        <ListItemButton selected={selectedMenu === "DeletePost"} onClick={() => { setSelectedMenu('DeletePost') }}>
+        <ListItemButton selected={selectedMenu === "DeletePost"} onClick={() => { /*setSelectedMenu('DeletePost')*/ }}>
           <ListItemIcon>
             <DeleteOutlineOutlinedIcon />
           </ListItemIcon>
