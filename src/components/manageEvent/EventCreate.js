@@ -28,7 +28,7 @@ const EventCreate = ({ baseURL, handler }) => {
       }
       reader.readAsDataURL(files[0])
     }
-  }, [])
+  }, [image])
 
 
   const addTag = () => {

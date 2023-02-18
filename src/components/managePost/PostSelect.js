@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Box, ImageList, ImageListItem, ImageListItemBar } from '@mui/material'
+import { Box, ImageList, ImageListItem } from '@mui/material'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 
 function PostSelect({ baseURL, handler, id }){
@@ -19,11 +19,11 @@ function PostSelect({ baseURL, handler, id }){
 
   useEffect(() => {
     getPosts()
-  }, [])
+  }, [baseURL])
 
   return(
-    <Box>
-      <ImageList cols={3} variant='quilted'>
+    <Box sx={{px: 2}}>
+      <ImageList cols={3} >
         {posts.map((data) => {
           return (
             <ImageListItem key = {data.id} onClick={() => {handler(data.id);getPosts()}}>
