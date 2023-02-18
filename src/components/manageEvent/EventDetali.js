@@ -16,7 +16,7 @@ function EventDetail({ baseURL, id }) {
   //データの取得
   const getEvent = async () => {
     if (id !== -1) {
-      await axios.get(baseURL + '/events/' + id)
+      await axios.get(baseURL + 'events/' + id)
         .then(res => {
           setEventname(res.data.data.eventname)
           setContents(res.data.data.contents)

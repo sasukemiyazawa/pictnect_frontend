@@ -43,7 +43,7 @@ const EventEdit = ({ baseURL, id }) => {
 
   const sendFormData = async () => {
     const data = await createFormData()
-    await axios.patch(baseURL + '/events/' + id, data, { headers: {} })
+    await axios.patch(baseURL + 'events/' + id, data, { headers: {} })
       .then(res => {
         console.log(res);
         alert("投稿に成功しました！")

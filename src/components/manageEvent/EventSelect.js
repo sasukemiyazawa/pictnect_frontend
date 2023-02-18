@@ -11,7 +11,7 @@ const EventSelect = ({ baseURL, handler }) => {
   const [isOpenDialog, setIsOpenDialog] = useState(false)
   //イベントの取得・オブジェクトをそのままステートへ保存
   const getEvents = async () => {
-    await axios.get(baseURL + '/events')
+    await axios.get(baseURL + 'events')
       .then(res => {
         setEvents(res.data.data)
       })

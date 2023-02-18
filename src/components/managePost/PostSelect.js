@@ -7,7 +7,7 @@ function PostSelect({ baseURL, handler, id }){
   const [posts, setPosts] = useState([])
 
   const getPosts = async() => {
-    await axios.get(baseURL + '/posts')
+    await axios.get(baseURL + 'posts')
       .then(res => {
         setPosts(res.data.data)
       })

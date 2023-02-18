@@ -15,7 +15,7 @@ function PostDetail({baseURL, id}) {
 
   const getPost = async() => {
     if (id !== -1){
-      await axios.get(baseURL + '/posts/' + id)
+      await axios.get(baseURL + 'posts/' + id)
         .then(res => {
           setNickname(res.data.data.nickname)
           setTitles(res.data.data.titles)

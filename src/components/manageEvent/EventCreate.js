@@ -59,7 +59,7 @@ const EventCreate = ({ baseURL, handler }) => {
   //バックエンドへのデータの送信
   const sendFormData = async () => {
     const data = await createFormData()
-    await axios.post(baseURL + '/events', data, { headers: {} })
+    await axios.post(baseURL + 'events', data, { headers: {} })
       .then(res => {
         console.log(res);
         alert("投稿に成功しました！")
