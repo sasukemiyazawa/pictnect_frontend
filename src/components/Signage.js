@@ -27,7 +27,7 @@ const Signage = ({ baseURL }) => {
   const [flag, setFlag] = useState(-1)
   const fovorite = (id) => {
     const url = baseURL + `posts/${id}/like`
-    console.log("fovoriteid: ", id)
+    // console.log("fovoriteid: ", id)
     axios.get(url)
       .then(res => {
         console.log(res)
@@ -124,7 +124,7 @@ const Signage = ({ baseURL }) => {
                 //   destState = 1
                 //   setSlide(1)
                 // }
-                console.log(dest, destState)
+                // console.log(dest, destState)
                 setSlide(dest)
               }}
               ref={ref}

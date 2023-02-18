@@ -1,10 +1,18 @@
+import { useEffect, useState } from "react"
 import styled from "styled-components"
 const Header = () => {
+    const [date, setDate] = useState(new Date())
+    useEffect(() => {
+        const timerId = setInterval(() => {
+            setDate(new Date());
+        }, 10000)
+        return () => clearInterval(timerId);
+    }, [date])
     return (
         <StyledHeader>
             <TimeDiv>
-                <Date>2022年12月12日</Date>
-                <Time>12<span>:</span>34</Time>
+                <DateTag>{date.getFullYear()}年{('0' + (date.getMonth() + 1)).slice(-2)}月{('0' + date.getDate()).slice(-2)}日</DateTag>
+                <Time>{('0' + date.getHours()).slice(-2)}<span>:</span>{('0' + date.getMinutes()).slice(-2)}</Time>
             </TimeDiv>
             <CommentDiv>
                 <StyledP>先生からのコメント:</StyledP>
@@ -80,7 +88,7 @@ const Time = styled.h2`
 const TimeDiv = styled.div`
     width: 25%;
 `
-const Date = styled.h5`
+const DateTag = styled.h5`
     margin:0;
     color: #F4F3F6;
     font-size: 0.5rem;
