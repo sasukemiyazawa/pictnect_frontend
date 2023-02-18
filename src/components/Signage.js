@@ -11,6 +11,7 @@ import { loadFull } from "tsparticles";
 import particlesOptions from "./snow.json";
 import { useKey } from "rooks"
 import Heart from "./Heart"
+import Anime from "./Anime"
 
 const Signage = ({ baseURL }) => {
 
@@ -60,12 +61,19 @@ const Signage = ({ baseURL }) => {
     // getEventData()
   }, [flag])
 
-  // useEffect(() => {
-  //   // setState(destState)
-  //   if (ref.current) {
-  //     console.log(slide)
-  //   }
-  // }, [slide])
+  const [firstAction, setFirstAction] = useState(false)
+  let intervalId
+  useEffect(() => {
+    if (!firstAction) {
+      intervalId = setInterval(() => {
+        ref.current.splide.go('>')
+        setFirstAction(true)
+      }, 15000);
+    } else {
+      clearInterval(intervalId)
+      console.log("cleared")
+    }
+  }, [firstAction])
 
   // const [bFlag, setBFlag] = useState(false)
   const enterKeyHandler = () => {
@@ -94,7 +102,7 @@ const Signage = ({ baseURL }) => {
             <Splide
               options={{
                 autoplay: true,
-                interval: 5000,
+                interval: 15000,
                 type: 'fade',
                 speed: 1000,
                 height: '90vh',
@@ -122,18 +130,18 @@ const Signage = ({ baseURL }) => {
               ref={ref}
             >
               {Object.keys(datas).map(key => <Slides key={key} data={datas[key]} />)}
-              {/* <EventSlide event={event} /> */}
             </Splide>
           </SlidesDiv>
+          <AnimeDiv>
+            <Anime />
+          </AnimeDiv>
         </ParticlesDiv>
-        <Wrapper>
-          <NNextSlide />
-          <NextSlide />
-        </Wrapper>
         {on && <Heart on={on} />}
+
 
       </Container>
     </>
+
   )
 }
 export default Signage
@@ -170,7 +178,7 @@ const NNextSlide = styled.div`
 `
 const ParticlesDiv = styled.div`
   position: relative;
-  height: 87vh;
+  height: 93vh;
   box-shadow: 0px 0.5rem, 0.5rem rgba(0, 0, 0, 0.25);
   border-radius: 0px 0px 5rem 5rem;
 `
@@ -194,9 +202,8 @@ const StyledH3 = styled.h3`
             3px 0px 3px white, -3px -0px 3px white,
             0px 3px 3px white,  0px -3px 3px white;
 `
-const Wrapper = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  top: -94vh;
+const AnimeDiv = styled.div`
+  position: absolute;
+  z-index: 3;
+  bottom: 0px;
 `
