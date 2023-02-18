@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@mui/icons-material": "^5.10.16",
-    "@mui/material": "^5.10.17",
-    "@mui/styled-engine-sc": "^5.10.16",
     "@splidejs/react-splide": "^0.7.12",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.10.15",
+    "@mui/material": "^5.10.15",
+    "@mui/styled-engine-sc": "^5.10.14",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -20,7 +22,9 @@
     "styled-components": "^5.3.6",
     "tslib": "^2.4.1",
     "tsparticles": "^2.6.0",
-    "tsparticles-engine": "^2.6.0"
+    "tsparticles-engine": "^2.6.0",
+    "react-router-dom": "^6.8.1",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
