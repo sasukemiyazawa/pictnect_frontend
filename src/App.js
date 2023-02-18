@@ -50,9 +50,18 @@ function App() {
     <div className="App">
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        {isDesktop && <>大きいです…♡</>}
-        {!isDesktop &&
-          <BrowserRouter>
+
+
+        <BrowserRouter>
+
+          {isDesktop &&
+            <Routes>
+              <Route path={'/signage'} element={<Signage baseURL={baseURL} />} />
+              <Route path={'/manager'} element={<ManagePage baseURL={baseURL} />} />
+              <Route path={'/manager/login'} element={<LoginPage />} />
+            </Routes>
+          }
+          {!isDesktop &&
             <Routes>
               <Route path='/' element={<>ルート</>} />
               <Route path='/sumaho' element={<BottomNav />} >
@@ -67,12 +76,9 @@ function App() {
                 <Route path='event/:id' element={<ListShow baseURL={baseURL} />} />
                 {/* </Route> */}
               </Route>
-              <Route path={'/signage'} element={<Signage baseURL={baseURL} />} />
-              <Route path={'/manager'} element={<ManagePage baseURL={baseURL} />} />
-              <Route path={'/manager/login'} element={<LoginPage />} />
             </Routes>
-          </BrowserRouter>
-        }
+          }
+        </BrowserRouter>
       </ThemeProvider>
     </div>
   );
