@@ -20,7 +20,7 @@ const LoginPage = () => {
     <div>
       { isLoading && <ManageSplash/>}
       <Grid>
-        <Paper elevation={3} sx={{ p: 4, height: "70vh", width: "280px", m: "20px auto"}} >
+        <Paper elevation={3} sx={{ p: 4, height: "70vh", width: "450px", m: "20px auto"}} >
           <Grid container direction="column" justifyContent="flex-start" alignItems="center">
             <LogoIcon src={logoicon} />
             <Typography variant={"h5"} sx={{ m: "30px" }}>管理画面ログイン</Typography>
