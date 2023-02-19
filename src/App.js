@@ -20,6 +20,7 @@ import LoginPage from './components/LoginPage'
 function App() {
   const baseURL = "http://localhost:3001/api/v1/"
 
+
   // スマホ用・レスポンシブにする
   // FIXME: クロムでしか効かない
   const isDesktop = useMediaQuery({ query: '(min-width: 768px' })

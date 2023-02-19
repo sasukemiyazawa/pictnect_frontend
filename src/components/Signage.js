@@ -151,6 +151,8 @@ const Container = styled.div`
   /* aspect-ratio: 9/16; */
   width: 56.25vh;
   background-color: #707070;
+
+  font-size: 2vh;
 `
 const NextSlide = styled.div`
   width: 100%;

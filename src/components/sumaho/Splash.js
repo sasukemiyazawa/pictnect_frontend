@@ -35,7 +35,7 @@ export default function Splash({ setSplash }) {
   const style3 = useSpring({
     from: { opacity: 1, scale: 1 },
     to: { opacity: 0, scale: 5 },
-    config: { duration: 2000 },
+    config: { duration: 1000 },
     onRest: (_a, _b, item) => {
       console.log("c")
       // navigate("/sumaho/favorite")
@@ -44,7 +44,15 @@ export default function Splash({ setSplash }) {
     ref: ref3
   })
 
-  useChain([ref1, ref2, ref3])
+  const refs = [ref1, ref2, ref3]
+  const [timesteps] = [0, 1, 2]
+  const timeframe = 10000
+  refs.forEach((ref, index) => {
+    const time = timesteps[index] * timeframe
+    ref.delay = time
+  })
+
+  useChain([ref1, ref2, ref3], [0.1, 0.2, 0.45], 10000)
   return (
     <div>
       <animated.div style={style3}>

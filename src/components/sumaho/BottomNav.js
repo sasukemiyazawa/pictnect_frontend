@@ -55,12 +55,14 @@ const BottomNav = () => {
 }
 
 export default BottomNav
-
+const Sumaho = styled.div`
+  font-size: 3.4vw;
+`
 const Container = styled.div`
     /* position: absolute; */
     position: fixed;
     bottom: 0px;
     width: 100%;
-    height: 5rem;
+    height: 5em;
     background-color: white;
 `

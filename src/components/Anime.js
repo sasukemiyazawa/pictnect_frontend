@@ -18,7 +18,7 @@ const Anime = () => {
       options={{
         type: 'fade',
         autoplay: 'true',
-        interval: 5000,
+        interval:3000,
         rewind: true,
         arrows: false,
         width: '56.25vh',
