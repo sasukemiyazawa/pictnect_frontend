@@ -54,16 +54,16 @@ const Search = ({ baseURL }) => {
             {image && <Img src={image} />}
             <Container>
                 <TypoDiv>
-                    <Typography sx={{ fontFamily: 'Noto Sans JP', fontWeight: 'bold', marginBottom: '0.5rem' }} color="subtitle1.main">タグで検索</Typography>
+                    <Typography sx={{ fontFamily: 'Noto Sans JP', fontWeight: 'bold', marginBottom: '0.5em' }} color="subtitle1.main">タグで検索</Typography>
                 </TypoDiv>
-                <StyledTypo sx={{ fontFamily: 'Noto Sans JP', fontWeight: 'bold', marginTop: '0.5rem', fontSize: '0.8rem' }} color="subtitle1.main">よく使われているタグ</StyledTypo>
+                <StyledTypo sx={{ fontFamily: 'Noto Sans JP', fontWeight: 'bold', marginTop: '0.5em', fontSize: '0.8em' }} color="subtitle1.main">よく使われているタグ</StyledTypo>
                 <TagDiv>
                     <Grid container spacing={1.5}>
                         {Object.keys(tagDatas).slice(0, 8).map(key => <Tag key={key} data={tagDatas[key]} />)}
                     </Grid>
                 </TagDiv>
                 {/* FIXME: イベントタグを本物にする */}
-                <StyledTypo sx={{ fontFamily: 'Noto Sans JP', fontWeight: 'bold', marginTop: '2.5rem', fontSize: '0.8rem' }} color="subtitle1.main">イベントタグ</StyledTypo>
+                <StyledTypo sx={{ fontFamily: 'Noto Sans JP', fontWeight: 'bold', marginTop: '2.5em', fontSize: '0.8em' }} color="subtitle1.main">イベントタグ</StyledTypo>
                 <TagDiv>
                     <Grid container spacing={1.5}>
                         {Object.keys(tagDatas).slice(0, 8).map(key => <Tag key={key} data={tagDatas[key]} />)}
@@ -79,7 +79,7 @@ const Search = ({ baseURL }) => {
                         display: 'flex',
                         mr: 0,
                         ml: 'auto',
-                        mt: '2rem'
+                        mt: '2em'
                     }}
                     size="large"
                     onClick={() => navigate("/sumaho/post")}
@@ -91,16 +91,17 @@ const Search = ({ baseURL }) => {
 }
 export default Search
 const Div = styled.div`
-    height: calc(100% - 5rem);
+    height: calc(100% - 5em);
     overflow: scroll;
+    padding-bottom: 5em;
 `
 const Container = styled.div`
-    padding: 1.5rem;
+    padding: 1.5em;
 `
 const SearchField = styled.div`
     display: flex;
-    height: 1.5rem;
-    margin: 1.5rem;
+    height: 1.5em;
+    margin: 1.5em;
     background-color: #E4E4E4;
 `
 const Img = styled.img`
@@ -124,7 +125,7 @@ const TypoDiv = styled.div`
     border-bottom: solid #CDCDCD 2px;
 `
 const TagDiv = styled.div`
-    margin-top: 1rem;
+    margin-top: 1em;
     width: 90%;
     margin-left: auto;
     margin-right: auto;

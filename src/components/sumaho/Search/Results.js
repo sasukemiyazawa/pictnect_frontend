@@ -46,7 +46,7 @@ const Results = ({ baseURL }) => {
     <>
       {/*FIXME: もっとおしゃれに  */}
       <AppBar sx={{ backgroundColor: 'white' }}>
-        <Toolbar sx={{ height: "3rem" }} >
+        <Toolbar sx={{ height: "3em" }} >
           <IconButton sx={{ borderRadius: '50%', backgroundColor: '#E7E7E7' }} size='small' component={Link} to="/sumaho/search">
             <ArrowBackIosTwoToneIcon />
           </IconButton>
@@ -72,10 +72,10 @@ const Results = ({ baseURL }) => {
       </AppBar>
 
       <ImageListDiv>
-        <Typography sx={{ mb: "0.5rem", fontFamily: "Zen Kaku Gothic New", fontWeight: "Bold" }}>
+        <Typography sx={{ mb: "0.5em", fontFamily: "Zen Kaku Gothic New", fontWeight: "Bold" }}>
           {tag} &nbsp; の検索結果：{datas.length}枚
         </Typography>
-        <ImageList variant="masonry" sx={{ pb: "5rem", mt: 0 }}>
+        <ImageList variant="masonry" sx={{ pb: "5em", mt: 0 }}>
           {datas.map((data) => (
             <ImageListItem key={data.images_url} component={Link} to={`/sumaho/show/${data.id}`}>
               <img
@@ -85,11 +85,16 @@ const Results = ({ baseURL }) => {
               />
               <ImageListItemBar
                 title={data.titles}
-                subtitle={<><FavoriteIcon sx={{ fontSize: '0.6rem' }} color="secondary" />{data.likeCounts}</>}
+                subtitle={
+                <MySubtitle>
+                <FavoriteIcon sx={{ fontSize: '0.6em' }} color="secondary" />
+                <Span>{data.likeCounts}</Span>
+                </MySubtitle>}
                 sx={{
                   fontFamily: 'Noto Sans JP',
-                  height: '2.5rem',
-                  "& .MuiImageListItemBar-title": { fontSize: '0.7rem', fontWeight: 'bold' },
+                  height: '2.5em',
+                  "& .MuiImageListItemBar-title": { fontSize: '0.7em', fontWeight: 'bold' },
+                  "& .MuiImageListItemBar-subtitle": {overflow: 'visible'}
                 }}
                 actionIcon={
                   <IconButton>
@@ -108,7 +113,15 @@ export default Results
 
 const ImageListDiv = styled.div`
   width: 85%;
-  margin-top: 5rem;
+  margin-top: 5em;
   margin-left: auto;
   margin-right: auto;
+`
+const MySubtitle = styled.div`
+  /* font-size: 0.75em; */
+  margin-top: -0.5em;
+  overflow: visible;
+`
+const Span = styled.span`
+  font-size: 0.75em;
 `

@@ -39,7 +39,7 @@ const Show = ({ baseURL }) => {
   return (
     <Container>
       <AppBar sx={{ backgroundColor: 'white' }}>
-        <Toolbar sx={{ height: "3rem" }} >
+        <Toolbar sx={{ height: "3em" }} >
           {/* FIXME: 戻るボタンの挙動 */}
           <IconButton sx={{ borderRadius: '50%', backgroundColor: '#E7E7E7' }} size='small' onClick={() => navigate(-1)}>
             <ArrowBackIosTwoToneIcon />
@@ -62,16 +62,16 @@ const Show = ({ baseURL }) => {
         <Img src={data.images_url} />
 
         <Div>
-          <Typography sx={{ fontFamily: "Noto Sans JP", fontWeight: "Bold", mr: "0.5rem" }} color="subtitle1.main">
+          <Typography sx={{ fontFamily: "Noto Sans JP", fontWeight: "Bold", mr: "0.5em" }} color="subtitle1.main">
             {data.titles}
           </Typography>
 
-          <FavoriteIcon sx={{ fontFamily: "Noto Sans JP", fontWeight: "Bold", fontSize: '0.8rem', position: "relative", bottom: "0.15rem" }} color="primary" />
-          <Typography sx={{ fontFamily: "Noto Sans JP", fontWeight: "Bold", fontSize: '0.8rem' }} color="subtitle1.main">
+          <FavoriteIcon sx={{ fontFamily: "Noto Sans JP", fontWeight: "Bold", fontSize: '0.8em', position: "relative", bottom: "0.15em" }} color="primary" />
+          <Typography sx={{ fontFamily: "Noto Sans JP", fontWeight: "Bold", fontSize: '0.8em' }} color="subtitle1.main">
             {data.likeCounts}
           </Typography>
         </Div>
-        <Typography sx={{ fontFamily: "Noto Sans JP", fontWeight: "Bold", fontSize: "0.7rem" }} color="subtitle1.main">
+        <Typography sx={{ fontFamily: "Noto Sans JP", fontWeight: "Bold", fontSize: "0.7em" }} color="subtitle1.main">
           {data.nickname}さんの投稿
         </Typography>
 
@@ -79,7 +79,7 @@ const Show = ({ baseURL }) => {
           <Grid container spacing={1.5}>
             {Object.keys(tagDatas).slice(0, 8).map(key => (
               <Grid item xs={3} key={key}>
-                <Button variant="text" color="info" sx={{ padding: "0px", border: 2, borderRadius: '1rem', borderColor: 'secondary.main', width: '100%' }} >
+                <Button variant="text" color="info" sx={{ padding: "0px", border: 2, borderRadius: '1em', borderColor: 'secondary.main', width: '100%' }} >
                   <Typography sx={{ fontFamily: 'Zen Kaku Gothic New', fontWeight: 'bold' }}>{tagDatas[key]}</Typography>
                 </Button>
               </Grid>
@@ -87,7 +87,7 @@ const Show = ({ baseURL }) => {
           </Grid>
         </TagDiv>
 
-        <Typography sx={{ fontSize: "0.8rem", mt: "0.5rem" }}>
+        <Typography sx={{ fontSize: "0.8em", mt: "0.5em" }}>
           {data.comments}
         </Typography>
 
@@ -97,14 +97,14 @@ const Show = ({ baseURL }) => {
 export default Show
 // FIXME: marginの使い方、雑かも
 const Container = styled.div`
-  padding: 1.5rem;
-  height: calc(100vh - 5rem);
+  padding: 1.5em;
+  height: calc(100vh - 5em);
   overflow-y: scroll;
   overflow-x: hidden;
 `
 const Img = styled.img`
-  margin-top: 4rem;
-  margin-bottom: 0.2rem;
+  margin-top: 4em;
+  margin-bottom: 0.2em;
   width: 100%;
   position: relative;
   object-fit: cover;
@@ -114,7 +114,7 @@ const Div = styled.div`
   align-items: flex-end;
 `
 const TagDiv = styled.div`
-  margin: 0.5rem;
+  margin: 0.5em;
   width: 100%;
   margin-left: 0;
 `

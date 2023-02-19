@@ -90,7 +90,7 @@
       "push": {
         "particles_nb": 4
       },
-      "remove": {
+      "emove": {
         "particles_nb": 2
       }
     }

@@ -37,28 +37,28 @@ const ListShow = ({ baseURL, setTransition, eId }) => {
     <>
       {/*FIXME: もっとおしゃれに  */}
 
-      <Toolbar sx={{ height: "3rem", mt: "1rem" }} >
+      <Toolbar sx={{ height: "3em", mt: "1em" }} >
         {/* <IconButton sx={{ borderRadius: '50%', backgroundColor: '#E7E7E7' }} size='small' component={Link} onClick={()=>navigate(-1)}> */}
         <IconButton sx={{ borderRadius: '50%', backgroundColor: '#E7E7E7' }} size='small' component={Link} onClick={()=>setTransition(false)}>
           <ArrowBackIosTwoToneIcon />
         </IconButton>
         {/* FIXME: ml:26vwをもっとスマートな記述にしたい */}
-        <Typography sx={{ fontFamily: "Zen Kaku Gothic New", color: "#333333", ml: '26vw', fontWeight: 'regular', fontSize: '1.5rem' }}>
+        <Typography sx={{ fontFamily: "Zen Kaku Gothic New", color: "#333333", ml: '26vw', fontWeight: 'regular', fontSize: '1.5em' }}>
           イベント
         </Typography>
       </Toolbar>
       <TypoDiv>
-        <Typography sx={{ fontFamily: "Zen Kaku Gothic New", color: "#000000",fontWeight: 'Bold', fontSize: '0.7rem' }}>
+        <Typography sx={{ fontFamily: "Zen Kaku Gothic New", color: "#000000",fontWeight: 'Bold', fontSize: '0.7em' }}>
           コミュニティスペース内で仮装をし、写真をとりました。
           仮装はこちらで用意したものを着ても持ち込みもOKでした。
         </Typography>
       </TypoDiv>
 
       <ImageListDiv>
-        <Typography sx={{ mb: "0.5rem", fontFamily: "Zen Kaku Gothic New", fontWeight: "Bold" }}>
+        <Typography sx={{ mb: "0.5em", fontFamily: "Zen Kaku Gothic New", fontWeight: "Bold", fontSize: '1em' }}>
           {tag} &nbsp; の検索結果：{datas.length}枚
         </Typography>
-        <ImageList variant="masonry" sx={{ pb: "5rem", mt: 0 }}>
+        <ImageList variant="masonry" sx={{ pb: "5em", mt: 0 }}>
           {datas.map((data) => (
             <ImageListItem key={data.images_url} component={Link} to={`/sumaho/show/${data.id}`}>
               <img
@@ -68,11 +68,12 @@ const ListShow = ({ baseURL, setTransition, eId }) => {
               />
               <ImageListItemBar
                 title={data.titles}
-                subtitle={<><FavoriteIcon sx={{ fontSize: '0.6rem' }} color="secondary" />{data.likeCounts}</>}
+                subtitle={<><FavoriteIcon sx={{ fontSize: '0.6em' }} color="secondary" />{data.likeCounts}</>}
                 sx={{
                   fontFamily: 'Noto Sans JP',
-                  height: '2.5rem',
-                  "& .MuiImageListItemBar-title": { fontSize: '0.7rem', fontWeight: 'bold' },
+                  height: '2.5em',
+                  "& .MuiImageListItemBar-title": { fontSize: '0.7em', fontWeight: 'bold' },
+                  "& .MuiImageListItemBar-subtitle": {overflow: 'visible', fontSize: '0.75em', mt: '-0.5em'}
                 }}
                 actionIcon={
                   <IconButton>
@@ -92,12 +93,12 @@ export default ListShow
 
 const ImageListDiv = styled.div`
   width: 85%;
-  margin-top: 1rem;
+  margin-top: 1em;
   margin-left: auto;
   margin-right: auto;
 `
 const TypoDiv = styled.div`
   width: 100%;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 2em;
+  padding-right: 2em;
 `

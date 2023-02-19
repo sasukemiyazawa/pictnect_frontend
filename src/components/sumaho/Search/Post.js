@@ -8,7 +8,7 @@ TODO:
 */
 import axios from "axios"
 import { useEffect, useState, useCallback } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Button, Typography } from "@mui/material"
 import { IconButton } from "@mui/material"
 import { AppBar } from "@mui/material"
@@ -19,6 +19,8 @@ import styled from "styled-components"
 
 const Post = ({ baseURL }) => {
 
+  const navigate = useNavigate()
+
   const [tagDatas, setTagDatas] = useState([])
   const [tags, setTags] = useState([])
 
@@ -27,7 +29,7 @@ const Post = ({ baseURL }) => {
   const [nickname, setNickname] = useState('')
   const [comment, setComment] = useState('')
   const [label, setLabel] = useState('')
-  const [tag, setTag] = useState([])
+  const [tag, setTag] = useState('')
 
   const getTagDatas = () => {
     axios.get(`${baseURL}tags`)
@@ -81,6 +83,7 @@ const Post = ({ baseURL }) => {
       .then(res => {
         console.log(res);
         alert("投稿に成功しました！")
+        navigate(-1)
       })
       .catch(err => alert("エラーが発生しました"));
     }
@@ -93,7 +96,7 @@ const Post = ({ baseURL }) => {
     <>
       {/*FIXME: もっとおしゃれに  */}
       <AppBar sx={{ backgroundColor: 'white' }}>
-        <Toolbar sx={{ height: "3rem" }} >
+        <Toolbar sx={{ height: "3em" }} >
           <IconButton sx={{ borderRadius: '50%' }} size='small' component={Link} to="/sumaho/search">
             <ClearIcon />
           </IconButton>
@@ -132,36 +135,36 @@ const Post = ({ baseURL }) => {
               //FIXME: paddingうざい
               imgSrc
                 ? <ImgPrev src={imgSrc} />
-                : <PhotoIcon sx={{ fontSize: "5rem", mt: "8vh" }} />
+                : <PhotoIcon sx={{ fontSize: "5em", mt: "8vh" }} />
             }
           </IconButton>
         </IconDiv>
 
         <FlexDiv>
-          <Typography sx={{ fontFamily: "Zen Kaku Gothic New", mt: "1rem" }}>
+          <Typography sx={{ fontFamily: "Zen Kaku Gothic New", mt: "1em" }}>
             タイトル：
           </Typography>
           <Input type="text" onChange={e=>setTitle(e.target.value)}/>
         </FlexDiv>
 
         <FlexDiv>
-          <Typography sx={{ fontFamily: "Zen Kaku Gothic New", mt: "1rem" }}>
+          <Typography sx={{ fontFamily: "Zen Kaku Gothic New", mt: "1em" }}>
             ニックネーム：
           </Typography>
           <Input type="text" onChange={e=>setNickname(e.target.value)}/>
         </FlexDiv>
 
         <FlexDiv>
-          <Typography sx={{ fontFamily: "Zen Kaku Gothic New", mt: "1rem" }}>
+          <Typography sx={{ fontFamily: "Zen Kaku Gothic New", mt: "1em" }}>
             タグ：
           </Typography>
-          <Select value={tagDatas} onChange={e=>setTag(e.target.value)}>
+          <Select value={tag} onChange={e=>setTag(e.target.value)}>
             {tagDatas.map((v, i)=><option value={v}>{v}</option>)}
           </Select>
         </FlexDiv>
 
         <FlexDiv>
-          <Typography sx={{ fontFamily: "Zen Kaku Gothic New", mt: "1rem" }}>
+          <Typography sx={{ fontFamily: "Zen Kaku Gothic New", mt: "1em" }}>
             コメント：
           </Typography>
           <Input type="text" onChange={e=>setComment(e.target.value)}/>
@@ -174,7 +177,7 @@ const Post = ({ baseURL }) => {
 export default Post
 const Div = styled.div`
   width: 80%;
-  margin-top: 5rem;
+  margin-top: 5em;
   margin-left: auto;
   margin-right: auto;
 `
@@ -193,12 +196,12 @@ const FlexDiv = styled.div`
 const Input = styled.input`
   margin-left: auto;
   margin-top: auto;
-  height: 1.5rem;
+  height: 1.5em;
   width: 60%;
 `
 const Select = styled.select`
   margin-left: auto;
   margin-top: auto;
-  height: 1.5rem;
+  height: 1.5em;
   width: 60%;
 `

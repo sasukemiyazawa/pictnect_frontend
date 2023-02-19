@@ -20,6 +20,7 @@ import LoginPage from './components/LoginPage'
 function App() {
   const baseURL = process.env.REACT_APP_API
 
+
   // スマホ用・レスポンシブにする
   // FIXME: クロムでしか効かない
   const isDesktop = useMediaQuery({ query: '(min-width: 768px' })

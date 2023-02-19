@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import styled from "styled-components"
 import ListItem from "./ListItem"
 import ListShow from "./ListShow"
 
@@ -22,12 +23,15 @@ const List = ({ baseURL }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <>
+    <ListDiv>
       {transiton 
       ? <ListShow baseURL={baseURL} setTransition={setTranstion} eId={eId}/>
       : Object.keys(events).map(key => <ListItem key={key} event={events[key]} setTransition={setTranstion} setEId={setEId} />)
       }
-    </>
+    </ListDiv>
   )
 }
 export default List
+const ListDiv = styled.div`
+  padding-bottom: 5em;
+`

@@ -18,6 +18,18 @@ const Signage = ({ baseURL }) => {
   const ref = useRef("")
   var destState = 0
 
+  const [flag, setFlag] = useState(-1)
+  const fovorite = (id) => {
+    const url = baseURL + `posts/${id}/like`
+    // console.log("fovoriteid: ", id)
+    axios.get(url)
+      .then(res => {
+        console.log(res)
+        setFlag(flag * (-1))
+      })
+      .catch(err => console.log(err))
+  }
+
   const getDatas = () => {
     const url = baseURL + `posts/`
     axios.get(url)
@@ -40,8 +52,12 @@ const Signage = ({ baseURL }) => {
 
   useEffect(() => {
     getDatas()
-    getEventData()
-  }, [])
+    // getEventData()
+  }, [flag])
+
+  const onClick = () => {
+    fovorite([slide])
+  }
 
   useEffect(() => {
     // setState(destState)
@@ -60,23 +76,19 @@ const Signage = ({ baseURL }) => {
       {/* <h1>{splide.index}</h1> */}
       {/* <input type="number" value={state} placeholder="num" onChange={e => setState(e.target.value)} /> */}
 
-      {/* <Header /> */}
+      <Header />
 
       <ParticlesDiv>
         <Particles options={particlesOptions} init={particlesInit} />
 
-        <StyledH3>みんなの写真</StyledH3>
-
         <SlidesDiv>
-
-
           <Splide
             options={{
               autoplay: true,
               interval: 5000,
               type: 'fade',
               speed: 1000,
-              height: '90vh',
+              // height: '90vh',
               // perPage: 1,
               rewind: true,
               // direction: 'ttb',
@@ -88,15 +100,7 @@ const Signage = ({ baseURL }) => {
             }}
 
             onMoved={(splide, index, prev, dest) => {
-              if (dest === 10) {
-                destState = 2
-                // console.log(setSlide)
-                setSlide(2)
-              }
-              else {
-                destState = 1
-                setSlide(1)
-              }
+              setSlide(dest+1)
               // console.log(dest, destState)
             }}
 
@@ -104,7 +108,7 @@ const Signage = ({ baseURL }) => {
           >
 
 
-            {Object.keys(datas).map(key => <Slides key={key} data={datas[key]} />)}
+            {Object.keys(datas).map(key => <Slides key={key} data={datas[key]} onClick={onClick}/>)}
             {/* <EventSlide event={event} /> */}
 
           </Splide>
@@ -120,65 +124,21 @@ const Container = styled.div`
   /* aspect-ratio: 9/16; */
   /* width: 56.25vh; */
   background-color: #707070;
-
   /* FIXME: */
   overflow: scroll;
-
+  font-size: 1.5vh;
 `
-
-const NextSlide = styled.div`
-  width: 100%;
-  height: 97.5%;
-  position: absolute;
-  top: 0px;
-  border-radius: 0px 0px 2rem 2rem;
-  background-color: 
-  ${({ state }) => state === 1
-    ? "#8AAADB"
-    : "#8AAADB"
-  };
-`
-const NNextSlide = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0px;
-  border-radius: 0px 0px 2rem 2rem;
-  background-color: 
-  ${({ state }) => state === 1
-    ? "#5D8EDA"
-    : "#5D8EDA"
-  };
-`
-
 const ParticlesDiv = styled.div`
   position: relative;
-  height: 100%;
-
-  box-shadow: 0px 0.5rem, 0.5rem rgba(0, 0, 0, 0.25);
-  border-radius: 0px 0px 5rem 5rem;
+  top: 5vh;
+  height: calc(95vh - 5rem);
+  box-shadow: 0px 0.5em, 0.5em rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 5em 5em;
 `
-
 const SlidesDiv = styled.div`
   position: relative;
   z-index:3;
-`
-
-const StyledH3 = styled.h3`
-  @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700&display=swap');
-  color: #5D8EDA;
-  margin: 0px 0px 0px 0px;
-  position: absolute;
-  top: 1rem;
-  left: 2rem;
-  font-family: 'Zen Kaku Gothic New', sans-serif; 
-  z-index: 3;
-  font-size: 1.5rem;
-  text-shadow: 
-            3px 3px 3px white, -3px -3px 3px white,
-           -3px 3px 3px white,  3px -3px 3px white,
-            3px 0px 3px white, -3px -0px 3px white,
-            0px 3px 3px white,  0px -3px 3px white;
+  top: 2rem;
 `
 
 const Wrapper = styled.div`
