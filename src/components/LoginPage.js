@@ -13,7 +13,7 @@ const LoginPage = () => {
   const login = () => {
     setIsLoading(true)
     setTimeout(()=>navigate('/manager'), 2000)
-    
+
   }
 
   return (
