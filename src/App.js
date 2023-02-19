@@ -18,7 +18,7 @@ import ManagePage from './components/ManagePage'
 import LoginPage from './components/LoginPage'
 
 function App() {
-  const baseURL = "http://localhost:3001/api/v1/"
+  const baseURL = process.env.REACT_APP_API
 
   // スマホ用・レスポンシブにする
   // FIXME: クロムでしか効かない
