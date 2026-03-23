@@ -1,7 +1,7 @@
 {
   "fullScreen": {
     "enable": true,
-    "zIndex": -1
+    "zIndex": 1
   },
   "particles": {
     "number": {
@@ -90,7 +90,7 @@
       "push": {
         "particles_nb": 4
       },
-      "remove": {
+      "emove": {
         "particles_nb": 2
       }
     }
