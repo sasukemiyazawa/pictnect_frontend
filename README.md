@@ -1,70 +1,154 @@
-# Getting Started with Create React App
+# 病院コミュニティスペース向けデジタルプロダクト（Demo版）
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+本リポジトリには、新設される病院の「コミュニティスペース」を中心に設計した  
+**3つのデジタルプロダクトのデモンストレーション**が含まれています。
 
-## Available Scripts
+病院は地域住民が気軽に立ち寄れる場所を目指しており、  
+デジタル技術を活用した新しい交流の形を実現するために本プロジェクトを開発しました。
 
-In the project directory, you can run:
+高齢者を含む幅広い利用者がストレスなく参加できるよう、  
+**インストール不要・アカウント登録不要**で利用できる SNS を中心に、  
+病院側がノーコードで運用できる管理アプリ、  
+そしてコミュニティスペースに設置されるデジタルサイネージ向けの展示アプリを統合的に構築しています。
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# プロダクト構成（Products）
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 1. 画像共有型 SNS（Web SNS）
+- **アカウント登録なしで誰でも投稿可能**
+- ブラウザだけで利用できる軽量な SNS
+- 地域住民・来訪者が気軽に写真を共有し、コミュニティを形成
+- 高齢者でも迷わず使える UI を重視
+  
+<img width="420" height="923" alt="スクリーンショット 2026-03-23 16 31 04" src="https://github.com/user-attachments/assets/bf2c875b-b39a-456c-8b03-62defdd4e33d" />
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 2. デジタルサイネージ展示アプリ（Digital Signage App）
+- 病院のコミュニティスペースに設置される大型ディスプレイ向け
+- SNS に投稿された写真を自動でスライド表示
+- 時間経過でスクロールしたり、柔らかいアニメーションで魅せる
+- 来訪者の滞在体験向上を目的
 
-### `npm run build`
+<img width="561" height="1040" alt="スクリーンショット 2026-03-23 15 58 16" src="https://github.com/user-attachments/assets/5749eacb-df8c-4600-9794-574ddf846dbb" />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 3. ノーコード管理 GUI アプリ（Admin GUI）
+- 病院スタッフが **コードを書かずに SNS を運用**できる管理ツール
+- 不適切な投稿の削除
+- イベント・タグの作成
+- サイネージ表示内容の調整
+- 現場スタッフの負担を最小限にする操作性を重視
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  <img width="1591" height="1065" alt="スクリーンショット 2026-04-01 20 52 24" src="https://github.com/user-attachments/assets/403b03d0-832c-4b97-8f8f-d609269cb5a3" />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# 開発背景（Background）
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+新設される病院では、医療機能だけでなく  
+「地域の人が集まれるコミュニティスペース」を作る構想がありました。
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+その中心に設置されるデジタルサイネージを活用し、  
+来訪者同士が自然に交流できる仕組みとして、  
+**SNS × サイネージ × 管理アプリ** の三位一体のプロダクトを提案・開発しました。
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- 高齢者も利用するため、アプリのインストールやアカウント登録といった障壁を排除  
+- 病院側が自律的に運用できるよう、ノーコードで管理できる GUI を設計  
+- 地域住民が気軽に参加できる「開かれたコミュニティ」をデジタルで実現  
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# 使用技術（Tech Stack）
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## フロントエンド
+- **React.js**  
+  - SPA 構成で高速な UI を実現  
+  - 非同期通信によるスムーズな投稿・閲覧体験  
+- **MUI（Material UI）**  
+  - 医療現場でも視認性の高い UI コンポーネント  
+  - 高齢者にも優しい配色・余白設計  
+- axios（API 通信）  
+- styled-components（コンポーネント単位のスタイル管理）  
+- react-slick / Lottie（アニメーション・スライド表示）
 
-### Code Splitting
+## バックエンド
+- **Ruby on Rails**  
+  - ActiveRecord による DB 管理  
+  - ActiveStorage による画像アップロード  
+  - REST API を提供し、React から JSON でアクセス可能
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+# アーキテクチャ（Architecture）
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+本プロジェクトは **Rails をバックエンド API サーバー、React をフロントエンド SPA** とする構成で開発しています。
 
-### Making a Progressive Web App
+## データフロー概要
+[User]
+↓（ブラウザ操作）
+[React Frontend]
+↓ axios（非同期通信）
+[REST API - Rails]
+↓ ActiveRecord / ActiveStorage
+[Database]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+### 1. Rails（API サーバー）
+- ActiveRecord によるテーブル管理  
+- ActiveStorage による画像ファイルの保存  
+- 投稿データ・タグ・イベントなどを JSON 形式で返却  
+- SNS / サイネージ / 管理アプリのすべてが同じ API を利用
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 2. React（フロントエンド）
+- axios で Rails API にアクセス  
+- 取得した JSON を元に UI を描画  
+- MUI で統一感のあるデザインを実現  
+- react-slick や Lottie を用いてサイネージ向けのアニメーションを実装
 
-### Deployment
+### 3. 3つのアプリの関係性
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<img width="377" height="394" alt="app" src="https://github.com/user-attachments/assets/420282d7-b5b8-4214-a69d-ff1cbaa90499" />
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# 環境構築
+本プロジェクトはフロントエンドが React で構築されています。  
+動作確認のためには、以下の手順を実行してください。
+
+
+## 1. パッケージのインストール
+```
+
+npm install
+
+```
+## 2. 開発サーバーの起動
+```
+
+npm install
+
+```
+http://localhost:3000 で起動します。
+
+## 3. 各アプリケーションを表示
+
+サイネージ用アプリケーション: ~/
+
+APIと通信しない場合サイネージアプリのみ起動します。
+
+SNSアプリケーション：~/sumaho
+
+スマホアプリはブラウザがモバイルサイズでなければに表示されません。
+
+SNS管理アプリ: ~/manager
+
+---
+
+# 今後の改善点（Future Work）
+- 投稿のカテゴリ機能の追加  
+- サイネージのレイアウトテンプレート拡充  
+- 管理 GUI の権限管理  
+- パフォーマンス最適化（画像圧縮・キャッシュなど）
+
