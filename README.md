@@ -20,6 +20,9 @@
 - ブラウザだけで利用できる軽量な SNS
 - 地域住民・来訪者が気軽に写真を共有し、コミュニティを形成
 - 高齢者でも迷わず使える UI を重視
+  
+<img width="420" height="923" alt="スクリーンショット 2026-03-23 16 31 04" src="https://github.com/user-attachments/assets/bf2c875b-b39a-456c-8b03-62defdd4e33d" />
+
 
 ## 2. デジタルサイネージ展示アプリ（Digital Signage App）
 - 病院のコミュニティスペースに設置される大型ディスプレイ向け
@@ -27,12 +30,17 @@
 - 時間経過でスクロールしたり、柔らかいアニメーションで魅せる
 - 来訪者の滞在体験向上を目的
 
+<img width="561" height="1040" alt="スクリーンショット 2026-03-23 15 58 16" src="https://github.com/user-attachments/assets/5749eacb-df8c-4600-9794-574ddf846dbb" />
+
 ## 3. ノーコード管理 GUI アプリ（Admin GUI）
 - 病院スタッフが **コードを書かずに SNS を運用**できる管理ツール
 - 不適切な投稿の削除
 - イベント・タグの作成
 - サイネージ表示内容の調整
 - 現場スタッフの負担を最小限にする操作性を重視
+
+  <img width="1591" height="1065" alt="スクリーンショット 2026-04-01 20 52 24" src="https://github.com/user-attachments/assets/403b03d0-832c-4b97-8f8f-d609269cb5a3" />
+
 
 ---
 
@@ -122,7 +130,20 @@ npm install
 npm install
 
 ```
-http://localhost:3000で起動します。
+http://localhost:3000 で起動します。
+
+## 3. 各アプリケーションを表示
+
+サイネージ用アプリケーション: ~/
+
+APIと通信しない場合サイネージアプリのみ起動します。
+
+SNSアプリケーション：~/sumaho
+
+スマホアプリはブラウザがモバイルサイズでなければに表示されません。
+
+SNS管理アプリ: ~/manager
+
 ---
 
 # 今後の改善点（Future Work）
